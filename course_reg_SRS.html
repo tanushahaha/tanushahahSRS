@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration System SRS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #dad7cd;
+            background: linear-gradient(to right, #344e41, #3a5a40);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #a3b18a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+        }
+
+        h1, h2, h3 {
+            color: #344e41;
+            border-bottom: 2px solid #3a5a40;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+            color: #344e41;
+        }
+
+        code {
+            background-color: #588157;
+            color: #dad7cd;
+            padding: 2px 5px;
+            border-radius: 5px;
+        }
+
+        pre {
+            background-color: #3a5a40;
+            color: #dad7cd;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            margin: 1.5em 0;
+            padding-left: 20px;
+            list-style-type: square;
+        }
+
+        li {
+            margin-bottom: 0.75em;
+            color: #344e41;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .profile {
+            text-align: center;
+            color: #dad7cd;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .fancy-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #dad7cd;
+            background-color: #344e41;
+            border: 2px solid #588157;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .fancy-button:hover {
+            background-color: #588157;
+            transform: scale(1.05);
+            color: #dad7cd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Course Registration System SRS</h1>
+
+        <h2>Introduction</h2>
+        <p>This document outlines the Software Requirements Specification (SRS) for the Course Registration System.</p>
+        
+        <h2>Purpose</h2>
+        <p>The purpose of this document is to provide a detailed description of the functionalities, system models, and requirements for the Course Registration System. This system is designed to help students register for courses, view available courses, and manage their schedules. Additionally, it provides functionalities for administrators to manage course offerings, student records, and registration timelines.</p>
+        
+        <h2>Scope</h2>
+        <p>The Course Registration System will allow students to browse and register for courses. Administrators will be able to manage course offerings, including adding or removing courses, and setting registration timelines. The system will ensure that students can only register for courses for which they meet the prerequisites and that courses do not conflict with each other in the schedule.</p>
+        
+        <h2>Definitions, Acronyms, and Abbreviations</h2>
+        <ul>
+            <li><strong>SRS</strong> - Software Requirements Specification</li>
+            <li><strong>CRUD</strong> - Create, Read, Update, Delete</li>
+            <li><strong>GUI</strong> - Graphical User Interface</li>
+            <li><strong>DBMS</strong> - Database Management System</li>
+        </ul>
+        
+        <h2>System Overview</h2>
+        <p>The Course Registration System will be a web-based application with a user-friendly interface. The system will consist of a frontend for the users (students and administrators) to interact with and a backend to handle all the data processing, business logic, and database interactions. The system will be developed using a combination of HTML, CSS, and JavaScript for the frontend, and a suitable backend technology such as Flask or Django for server-side processing.</p>
+        
+        <h2>Functional Requirements</h2>
+        <ul>
+            <li>Students should be able to view available courses.</li>
+            <li>Students should be able to register for courses.</li>
+            <li>Students should be able to view their current schedule.</li>
+            <li>Administrators should be able to add or remove courses.</li>
+            <li>Administrators should be able to manage student records.</li>
+        </ul>
+        
+        <h2>Non-Functional Requirements</h2>
+        <ul>
+            <li>The system should be secure and protect student data.</li>
+            <li>The system should be scalable to handle a large number of students.</li>
+            <li>The system should have a user-friendly interface.</li>
+            <li>The system should be available 24/7 with minimal downtime.</li>
+            <li>The system should be responsive and accessible on different devices.</li>
+        </ul>
+        
+        <h2>System Models</h2>
+        <pre>
+        Student {
+            id: int
+            name: string
+            courses: list
+        }
+
+        Course {
+            id: int
+            name: string
+            schedule: string
+        }
+        </pre>
+        
+        <h2>Use Cases</h2>
+        <p><strong>Use Case 1: Register for a Course</strong></p>
+        <p><strong>Actors:</strong> Student</p>
+        <p><strong>Preconditions:</strong> Student is logged in.</p>
+        <p><strong>Scenario:</strong> The student selects a course and confirms registration. The system checks for conflicts and adds the course to the student's schedule.</p>
+        <p><strong>Postconditions:</strong> The course is added to the student's schedule, and the course seat count is updated.</p>
+        
+        <p><strong>Use Case 2: Add a Course Offering</strong></p>
+        <p><strong>Actors:</strong> Administrator</p>
+        <p><strong>Preconditions:</strong> Administrator is logged in.</p>
+        <p><strong>Scenario:</strong> The administrator adds a new course offering with details such as course name, schedule, and instructor. The system saves the course offering to the database.</p>
+        <p><strong>Postconditions:</strong> The new course offering is available for students to register.</p>
+        
+        <h2>Conclusion</h2>
+        <p>The Course Registration System is designed to streamline the process of course registration for students and administrators, providing a secure, scalable, and user-friendly interface. The system will facilitate efficient management of course offerings and student schedules, ensuring that students have access to the courses they need to progress in their academic journey.</p>
+
+        <button class="fancy-button">Learn More</button>
+
+        <div class="profile-container">
+            <div class="profile">
+                <img src="tx.jpg" alt="Tanusha Raina">
+                <p>Tanusha Raina</p>
+                <p>PES1UG22CS645</p>
+            </div>
+            <div class="profile">
+                <img src="sb.jpg" alt="Subham R Bhuyan">
+                <p>Subham R Bhuyan</p>
+                <p>PES1UG22CS617</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
